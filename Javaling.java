@@ -9,6 +9,8 @@ public abstract class Javaling {
     private Tipo tipo;
     private Movimiento[] movimientos = new Movimiento[4];
 
+
+
     public int atacar(Javaling objetivo, int indiceMov){
 
         return 0;
