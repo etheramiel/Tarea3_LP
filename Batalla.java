@@ -1,3 +1,4 @@
-public class Batalla {
-    
+public interface Batalla {
+    public abstract Javaling elegirJavalingActivo();    
 }
+

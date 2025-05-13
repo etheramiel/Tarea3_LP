@@ -1,3 +1,3 @@
-public class Fuego {
-    
+public class Fuego extends Javaling{
+    private int enLlamas;
 }

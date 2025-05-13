@@ -1,3 +1,3 @@
-public class Agua {
-    
+public class Agua extends Javaling{
+    private boolean oleaje;
 }
