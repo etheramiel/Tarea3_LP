@@ -85,9 +85,46 @@ public abstract class Javaling {
     //----------------------------------------------------------------------------------
 
     public int atacar(Javaling objetivo, int indiceMov){
+        Movimiento mov = movimientos[indiceMov];
+        if(mov == null){
+            System.out.println("No tiene un movimiento en esa posicion");
+            return 0;
+        }
 
-        return 0;
+        if(mov.getEstado()){
+            //logica de estados
+            return 0;
+        }
+
+        int nivel = this.nivel;
+        int hpBase = this.hpBase;
+        int potencia= mov.getPotencia();
+
+        double habilidad = 1.0; //CAMBIAR ESTO
+
+        double stab = (mov.getTipo() == this.tipo) ? 1.5 : 1.0;
+        double efectividad = efectividadElementos.getEfectividad(mov.getTipo(), objetivo.getTipo());
+
+
+        double base = (((((2 * nivel / 5.0) + 2) * potencia * (hpBase/100.0)))/50.0) + 2;
+        int danioTotal = (int)(base * stab * efectividad * habilidad);
+
+        //objetivo.recibirDaño(danioTotal); 
+
+        System.out.println(nombre + " usó " + mov.getNombre() + " contra " + objetivo.getNombre());
+        System.out.println("Daño total inflingido: " + danioTotal);
+        return (int)danioTotal;
     }
+
+    public void recibirDaño(int danioTotal){
+        this.hpActual -= danioTotal;
+        if (hpActual < 0) {
+            hpActual = 0;
+        }
+        System.out.println(this.nombre + " ahora tiene " + this.hpActual + " HP");
+    }
+
+
 
     public void subirNivel(int nivel){
         

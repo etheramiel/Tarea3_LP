@@ -36,30 +36,36 @@ public class Main {
             return;}
         }
 
-        jugador.printEquipo();
+        // jugador.printEquipo();
 
         
-        System.out.println("\n✅ Tu Javaling fue creado:");
-        System.out.println("Nombre: " + javalingInicial.getNombre());
-        System.out.println("Tipo: " + javalingInicial.getTipo());
-        System.out.println("Nivel: " + javalingInicial.getNivel());
-        System.out.println("HP Total: " + javalingInicial.getHpTotal());
-        System.out.println("Velocidad: " + javalingInicial.getVelocidad());
+        Agua a = new Agua("Aqualo");
+        Fuego f = new Fuego("Flamar");
 
-        System.out.println("\nMovimientos:");
-        Movimiento[] movs = javalingInicial.getMovimientos();
-        for (int i = 0; i < movs.length; i++) {
-            System.out.print((i + 1) + ". ");
-            if (movs[i] != null) {
-                System.out.println(movs[i].getNombre() + " | Tipo: " + movs[i].getTipo() +
-                                   " | Potencia: " + movs[i].getPotencia() +
-                                   " | Estado: " + (movs[i].getEstado() ? "Sí" : "No"));
-            } else {
-                System.out.println("Movimiento no asignado.");
-            }
-        }
+        a.atacar(f, 0); // usa el primer ataque contra Flamar
+        f.atacar(a, 1);
+        
+        // System.out.println("Nombre: " + javalingInicial.getNombre());
+        // System.out.println("Tipo: " + javalingInicial.getTipo());
+        // System.out.println("Nivel: " + javalingInicial.getNivel());
+        // System.out.println("HP Total: " + javalingInicial.getHpTotal());
+        // System.out.println("Velocidad: " + javalingInicial.getVelocidad());
+
+        // System.out.println("\nMovimientos:");
+        // Movimiento[] movs = javalingInicial.getMovimientos();
+        // for (int i = 0; i < movs.length; i++) {
+        //     System.out.print((i + 1) + ". ");
+        //     if (movs[i] != null) {
+        //         System.out.println(movs[i].getNombre() + " | Tipo: " + movs[i].getTipo() +
+        //                            " | Potencia: " + movs[i].getPotencia() +
+        //                            " | Estado: " + (movs[i].getEstado() ? "Sí" : "No"));
+        //     } else {
+        //         System.out.println("Movimiento no asignado.");
+        //     }
+        // }
 
         scanner.close();
+
     }
 
     
