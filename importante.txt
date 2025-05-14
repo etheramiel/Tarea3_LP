@@ -1,0 +1,55 @@
+inicial no puede ser dragon
+cda uno que se captura se le pone nombre
+en cada piso pelear, capturar javaling o elegir objeto
+cada 10 pisos centro de curacion
+desde el piso 30, 5% de probabilidad de desafiar al campeon javaling. mas 1% cada piso que se sube
+derrotar al campeon se gana, perder todos los javaling termina el juego.
+dragon 3% de encontrarlo salvaje y 5% que lo posea un entrenador
+
+Movimiento
+    potencia 0-100
+
+Javaling
+    hpBase = hpBase por tipo +- 0-5
+    velocidad base 200 +- 0-199
+    2 movimientos de su propio tipo, un movimiento de estado y un 50% de probabilidad de generar un movimiento aleatorio
+
+    habilidad unica por subclase
+
+entrenador
+    hasta el piso 5 el nivel de sus javaling = 5 +- 1
+    para los demas Lbase[1, 3p]
+    L = Lbase + randint (-3, 3)
+
+    cantidad de javalings:
+        Piso 1 al 20: k = 1 ⇒ mmın = 1, mmax = 2
+        Piso 21 al 30:  k = 2 ⇒ 2 ≤ n ≤ 3
+        Piso 31 al 40: k = 3 ⇒ 3 ≤ n ≤ 4
+        Piso 41 al 50: k = 4 ⇒ 4 ≤ n ≤ 5
+        Piso ≥ 51 tope en 6
+
+    CAMPEON:
+        siempre puede llegar a tener 6 pokemones
+        al menos un dragon y es su primer javaling
+        la probabilidad de que el resto sean dragones es de un 20%
+        el nivel de este y sus javalings será el nivel del piso actual +5
+        todos sus javalings deben tener un ataque con al menos 100 de potencia
+
+Objetos
+    Pocion(20%): cura 20% al javaling escogido                           
+    Superpocion(30%): curará el 50% de la salud de un Javaling a eleccion
+    Pocion maxima(10%): curará el 100% de un javaling a eleccion
+    Revivir Maximo(10%): devolvera un javaling abatido (0 de salud) nuevamente a su 100%
+    Caraelo peqeño(20%): otorga 1 nivel adicional a cada Javaling de tu equipo.
+    Caramelo grande(10%): 2 niveles adicinales
+
+Combate
+    los entrenadores tienen 25% de probabilidad de escoger cualquiera de sus 4 ataques
+    cambiar usa 1 turno
+    escapar no da niveles
+
+Captura Javaling
+    40% de probabilidades de tener exito
+    30% de probabilidades de escapar, si falla se puede intentar caputrar de nuevo.
+    si equipo está lleno, dar posibilidad de eliminar miembro del equipo.
+

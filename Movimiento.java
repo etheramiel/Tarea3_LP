@@ -5,15 +5,19 @@ public class Movimiento {
     private int precision;
     private Tipo tipo;
     private boolean esEstado;
+    private String descripcion;
 
-
-    public Movimiento(String nombre, int potencia, int precision, Tipo tipo, boolean esEstado){
+    //Constructor
+    public Movimiento(String nombre, int potencia, int precision, boolean esEstado, Tipo tipo, String descripcion){
         this.nombre = nombre;
         this.potencia = potencia;
+        this.precision = precision;
         this.tipo = tipo;
         this.esEstado = esEstado;
+        this.descripcion = descripcion;
     }
 
+    //Getters y Setters --------------------------------------------------------------------------------------------
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -49,6 +53,13 @@ public class Movimiento {
         this.esEstado = esEstado;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+    //-------------------------------------------------------------------------
     
     
 }

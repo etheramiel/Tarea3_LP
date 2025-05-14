@@ -6,7 +6,7 @@ public class Entrenador implements Batalla{
 
     public Javaling elegirJavalingActivo(){
 
-        Javaling javaling = new Agua();
+        Javaling javaling = new Agua("hla");
 
         return javaling;
     }
