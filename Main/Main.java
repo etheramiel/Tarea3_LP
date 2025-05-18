@@ -40,7 +40,7 @@ public class Main {
     */
     public static void main(String[] args) {
         ReproductorAudio reproductor = new ReproductorAudio();
-        reproductor.reproducir("miscelaneos/misato.wav");
+        reproductor.reproducir("Miscelaneos/misato.wav");
         AsciiArt.printTorre();
 
         Javaling javalingInicial;
@@ -110,7 +110,7 @@ public class Main {
             switch(opcion){
                 case "1" -> {
                     reproductor.detener();
-                    reproductor.reproducir("miscelaneos/batalla.wav");
+                    reproductor.reproducir("Miscelaneos/batalla.wav");
                     Entrenador rival = new Entrenador(jugador.getPisoActual());
                     rival.mostrarEquipo();
                     derrotado = Combate.iniciarCombate(jugador, rival);
@@ -125,7 +125,7 @@ public class Main {
                         reproductor.detener();
                         return;
                     }
-                    reproductor.reproducir("miscelaneos/misato.wav");
+                    reproductor.reproducir("Miscelaneos/misato.wav");
                     avanzarPiso = true;
                 }
                 case "2" -> {
