@@ -1,3 +1,6 @@
+package Combate;
+import Movimientos.Tipo;
+
 public class efectividadElementos {
     public static double getEfectividad(Tipo ataque, Tipo defensa){
         return switch (ataque) {

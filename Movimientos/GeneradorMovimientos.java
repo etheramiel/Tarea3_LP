@@ -1,3 +1,5 @@
+package Movimientos;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -17,10 +19,18 @@ public class GeneradorMovimientos {
             default -> new ArrayList<>();
         };
 
+        int cantidad = 0;
         Collections.shuffle(tipoPropio);
-        resultado[0] = tipoPropio.get(0);
-        resultado[1] = tipoPropio.get(1);
-
+        for (int i = 0; i < tipoPropio.size(); i++) {
+            if(!tipoPropio.get(i).getEstado() && cantidad < 2){
+                resultado[cantidad] = tipoPropio.get(i);
+                cantidad++;
+            }
+        }
+        // resultado[0] = tipoPropio.get(0);
+        // resultado[1] = tipoPropio.get(1);
+        
+        //VEROFIVAR QUE NO SE REPITA EL DE ESTADO
         List<Movimiento> estado = DatosMovimientos.movimientosEstado();
         Collections.shuffle(estado);
         resultado[2] = estado.get(0);
@@ -31,7 +41,7 @@ public class GeneradorMovimientos {
             todos.addAll(DatosMovimientos.movimientosFuego());
             todos.addAll(DatosMovimientos.movimientosPlanta());
             todos.addAll(DatosMovimientos.movimientosDragon());
-            todos.addAll(DatosMovimientos.movimientosNormal());
+            // todos.addAll(DatosMovimientos.movimientosNormal());
 
 
             todos.removeIf(m -> m.getNombre().equals(resultado[0].getNombre()) || m.getNombre().equals(resultado[1].getNombre()) || m.getNombre().equals(resultado[2].getNombre()));
@@ -49,5 +59,19 @@ public class GeneradorMovimientos {
         }
         
         return resultado;
+    }
+
+
+    public static Movimiento generadorMovimientoAleatorio(Movimiento[] movimientos){
+        List<Movimiento> todos = new ArrayList<>();
+        todos.addAll(DatosMovimientos.movimientosAgua());
+        todos.addAll(DatosMovimientos.movimientosFuego());
+        todos.addAll(DatosMovimientos.movimientosPlanta());
+        todos.addAll(DatosMovimientos.movimientosDragon());
+        // todos.addAll(DatosMovimientos.movimientosNormal());
+
+        todos.removeIf(m -> m.getNombre().equals(movimientos[0].getNombre()) || m.getNombre().equals(movimientos[1].getNombre()) || m.getNombre().equals(movimientos[2].getNombre()));
+        Collections.shuffle(todos);
+        return todos.get(0);
     }
 }
