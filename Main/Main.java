@@ -10,6 +10,7 @@ import Javaling.Fuego;
 import Javaling.Javaling;
 import Javaling.Planta;
 import Miscelaneos.AsciiArt;
+import Miscelaneos.ReproductorAudio;
 import Objetos.ObjetoAleatorio;
 
 /*
@@ -38,6 +39,8 @@ public class Main {
     ***********************************************************************************
     */
     public static void main(String[] args) {
+        ReproductorAudio reproductor = new ReproductorAudio();
+        reproductor.reproducir("miscelaneos/misato.wav");
         AsciiArt.printTorre();
 
         Javaling javalingInicial;
@@ -106,14 +109,23 @@ public class Main {
             System.out.flush();
             switch(opcion){
                 case "1" -> {
+                    reproductor.detener();
+                    reproductor.reproducir("miscelaneos/batalla.wav");
                     Entrenador rival = new Entrenador(jugador.getPisoActual());
                     rival.mostrarEquipo();
                     derrotado = Combate.iniciarCombate(jugador, rival);
+                    reproductor.detener();
                     if (rival.getEsCampeon() && derrotado) {
                         System.out.println("Felicidades, Shinji... perdón, " + jugador.getNombre() + ".");
                         System.out.println("Has completado el juego. Omedetou... ¿pero realmente te sientes satisfecho?");
+                        reproductor.reproducir("Miscelaneos/ganar.wav");
+                        System.out.println(">Presione enter para salir...");
+                        scanner.nextLine(); 
+                        System.out.print("\033[H\033[2J");
+                        reproductor.detener();
                         return;
                     }
+                    reproductor.reproducir("miscelaneos/misato.wav");
                     avanzarPiso = true;
                 }
                 case "2" -> {
@@ -173,6 +185,7 @@ public class Main {
         }
 
         if (!derrotado) {
+            reproductor.detener();
             System.out.println("Lo lamento, has sido derrotado. No eres el mejor entrenador Javaling :c\nEl tercer impacto es inevitable ahora.");
         }
 
