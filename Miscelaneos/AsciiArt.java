@@ -1,5 +1,14 @@
 package Miscelaneos;
+
+/*
+ * Clase AsciiArt
+ * Esta clase contiene un método estático que imprime una representación artística de la Torre de Sauron.
+ */
 public class AsciiArt {
+    /**
+     * Método estático que imprime una representación artística de la Torre de Sauron.
+     * Utiliza caracteres ASCII para crear una imagen visual.
+     */
     public static void printTorre(){
         System.out.println("""
               Three::rings

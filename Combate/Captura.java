@@ -6,8 +6,31 @@ import Javaling.Javaling;
 import Entidades.Jugador;
 import Piso.Piso;
 
+/*
+ * Clase que maneja la captura de un Javaling salvaje.
+*
+ */
 public class Captura {
 
+        /**
+     * Nombre: intentarCapturar
+     * ---------------------------
+     * Descripción:
+     *  Esta función permite al jugador intentar capturar un Javaling salvaje.
+     *  Si el jugador decide no capturarlo, el Javaling puede escapar.
+     * Si el jugador captura el Javaling, se le da la opción de cambiarle el nombre.
+     * El jugador también sube de nivel al capturar un Javaling.
+     ****************************************************************************************
+    * Parámetros:
+    *   - jugador: El jugador que intenta capturar el Javaling.
+    *   - piso: El piso en el que se encuentra el jugador.
+    *   - scanner: El objeto Scanner para leer la entrada del usuario.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - void: No retorna nada.
+    ***********************************************************************************
+    */
     public static void intentarCapturar(Jugador jugador, Piso piso, Scanner scanner){
         Random rand = new Random();
         Javaling salvaje = Javaling.generadorSalvaje(piso);

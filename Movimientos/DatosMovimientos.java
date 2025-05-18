@@ -3,8 +3,29 @@ package Movimientos;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+ * Clase que contiene los movimientos de cada tipo de javaling
+ * y los movimientos de estado
+ */
 public class DatosMovimientos {
 
+    /**
+     * Nombre: movimientosAgua
+     * ---------------------------
+     * Descripción:
+     *   Genera una lista de movimientos de tipo Agua.
+     *  Cada movimiento tiene su nombre, potencia, precisión, descripción y tipo.
+     *  Se utiliza para inicializar los movimientos de un javaling de tipo Agua.
+     ****************************************************************************************
+    * Parámetros:
+    *   - void: No recibe parámetros.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - List<Movimiento>: Lista de movimientos de tipo Agua.
+    *   Cada movimiento es un objeto de la clase Movimiento.
+    ***********************************************************************************
+    */
     public static List<Movimiento> movimientosAgua(){
         List<Movimiento> lista = new ArrayList<>();
         lista.add(new Movimiento("Impulso Acuatico", 60, 100, false, Tipo.AGUA, "Aumenta Velocidad en 1.5 por el resto del combate"));
@@ -15,6 +36,23 @@ public class DatosMovimientos {
         return lista;
     }
 
+    /**
+     * Nombre: movimientosFuego
+     * ---------------------------
+     * Descripción:
+     *   Genera una lista de movimientos de tipo Fuego.
+     *  Cada movimiento tiene su nombre, potencia, precisión, descripción y tipo.
+     *  Se utiliza para inicializar los movimientos de un javaling de tipo Fuego.
+     ****************************************************************************************
+    * Parámetros:
+    *   - void: No recibe parámetros.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - List<Movimiento>: Lista de movimientos de tipo Fuego.
+    *   Cada movimiento es un objeto de la clase Movimiento.
+    ***********************************************************************************
+    */
     public static List<Movimiento> movimientosFuego(){
         List<Movimiento> lista = new ArrayList<>();
         lista.add(new Movimiento("Brasa Ignea ", 50, 100, false, Tipo.FUEGO, "Potencia*1.15 a todos sus movimientos por el resto del combate"));
@@ -25,6 +63,23 @@ public class DatosMovimientos {
         return lista;
     }
 
+    /**
+     * Nombre: movimientos Planta-
+     * ---------------------------
+     * Descripción:
+     *   Genera una lista de movimientos de tipo Planta.
+     *  Cada movimiento tiene su nombre, potencia, precisión, descripción y tipo.
+     *  Se utiliza para inicializar los movimientos de un javaling de tipo Planta.
+     ****************************************************************************************
+    * Parámetros:
+    *   - void: No recibe parámetros.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - List<Movimiento>: Lista de movimientos de tipo Planta.
+    *   Cada movimiento es un objeto de la clase Movimiento.
+    ***********************************************************************************
+    */
     public static List<Movimiento> movimientosPlanta(){
         List<Movimiento> lista = new ArrayList<>();
         lista.add(new Movimiento("Hoja Navaja ", 60, 100, false, Tipo.PLANTA, "20% de bajar Precisión del rival en 15 puntos"));
@@ -35,6 +90,23 @@ public class DatosMovimientos {
         return lista;
     }
 
+    /**
+     * Nombre: movimientosDragon
+     * ---------------------------
+     * Descripción:
+     *   Genera una lista de movimientos de tipo Dragon.
+     *  Cada movimiento tiene su nombre, potencia, precisión, descripción y tipo.
+     *  Se utiliza para inicializar los movimientos de un javaling de tipo Dragon.
+     ****************************************************************************************
+    * Parámetros:
+    *   - void: No recibe parámetros.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - List<Movimiento>: Lista de movimientos de tipo Dragon.
+    *   Cada movimiento es un objeto de la clase Movimiento.
+    ***********************************************************************************
+    */
     public static List<Movimiento> movimientosDragon(){
         List<Movimiento> lista = new ArrayList<>();
         lista.add(new Movimiento("Mordida Draconica", 70, 100, false, Tipo.DRAGON, "30% de hacer retroceder al rival (rival no puede atacar sgte. turno)"));
@@ -52,6 +124,22 @@ public class DatosMovimientos {
     //     return lista;
     // }
 
+    /**
+     * Nombre: movimientosEstado
+     * ---------------------------
+     * Descripción:
+     *   Genera una lista de movimientos de estado.
+     *  Cada movimiento tiene su nombre, potencia, precisión, descripción y tipo.
+     ****************************************************************************************
+    * Parámetros:
+    *   - void: No recibe parámetros.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - List<Movimiento>: Lista de movimientos de tipo de Estado.
+    *   Cada movimiento es un objeto de la clase Movimiento.
+    ***********************************************************************************
+    */
     public static List<Movimiento> movimientosEstado(){
         List<Movimiento> lista = new ArrayList<>();
         for(Movimiento m : movimientosAgua()){

@@ -5,7 +5,35 @@ import Javaling.Javaling;
 import Entidades.Entrenador;
 import Entidades.Jugador;
 
+/*
+ * Clase Combate
+ * Esta clase se encarga de gestionar el combate entre dos entrenadores, el jugador y un entrenador enemigo.
+ */
+
 public class Combate {
+
+    /**
+     * Nombre: iniciarCombate
+     * ---------------------------
+     * Descripción:
+     *   Esta función permite iniciar un combate entre el jugador y un entrenador enemigo.
+     *  El jugador puede elegir su Javaling activo y atacar al enemigo.
+     *  El combate continúa hasta que uno de los Javaling se quede sin puntos de salud.
+     *  Si el jugador gana, sube de nivel y se le da la opción de continuar.
+     *  Si el jugador pierde, se termina el juego.
+     * 
+     ****************************************************************************************
+    * Parámetros:
+    *   - jugador: El jugador que participa en el combate.
+    *   - entrenador: El entrenador enemigo con el que se combate.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - void: No retorna nada.
+    ***********************************************************************************
+    */
+
+
     public static boolean iniciarCombate(Jugador jugador, Entrenador entrenador){
         Scanner scanner = new Scanner(System.in);
         if(entrenador.getEsCampeon()){

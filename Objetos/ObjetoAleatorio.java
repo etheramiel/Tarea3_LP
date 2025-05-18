@@ -1,8 +1,27 @@
 package Objetos;
 import java.util.Random;
 
+/*
+ * Clase que genera objetos aleatorios.
+ * Contiene un metodo que genera un objeto aleatorio.
+ */
 public class ObjetoAleatorio {
     
+    /**
+     * Nombre: generarObjetoAleatorio
+     * ---------------------------
+     * Descripción:
+     *   Genera un objeto aleatorio.
+     *  Cada objeto tiene su nombre, si es curativo, si revive y su poder.
+     ****************************************************************************************
+    * Parámetros:
+    *   - void: No recibe parámetros.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - Objeto: Objeto aleatorio generado.
+    ***********************************************************************************
+    */
     public static Objeto generarObjetoAleatorio(){
         Random rand = new Random();
         int prob = rand.nextInt(100);

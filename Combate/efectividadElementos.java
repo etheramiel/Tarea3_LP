@@ -1,6 +1,10 @@
 package Combate;
 import Movimientos.Tipo;
 
+/**
+ * Clase que contiene el método getEfectividad para calcular la efectividad de un ataque.
+ * 
+ */
 public class efectividadElementos {
     public static double getEfectividad(Tipo ataque, Tipo defensa){
         return switch (ataque) {

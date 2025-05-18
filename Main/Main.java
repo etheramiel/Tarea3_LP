@@ -1,8 +1,5 @@
 package Main;
-import java.nio.channels.Pipe.SourceChannel;
 import java.util.Scanner;
-
-import javax.swing.text.StyledEditorKit.BoldAction;
 
 import Combate.Captura;
 import Combate.Combate;
@@ -15,8 +12,31 @@ import Javaling.Planta;
 import Miscelaneos.AsciiArt;
 import Objetos.ObjetoAleatorio;
 
+/*
+ * Main.java
+ * 
+ */
 public class Main {
 
+    /**
+     * Nombre: main
+     * ---------------------------
+     * Descripción:
+     *   Inicializa el juego, solicita el nombre del jugador y el tipo de Javaling inicial.
+     *   Luego inicia un bucle donde el jugador puede elegir entre pelear contra un entrenador,
+     *   buscar un Javaling salvaje, encontrar un objeto aleatorio, ver su equipo, usar un objeto
+     *   o ver los movimientos de su Javaling.
+     *   Si el jugador es derrotado, se termina el juego.
+     *   
+     ****************************************************************************************
+    * Parámetros:
+    *   - args: Argumentos de la línea de comandos (no se utilizan).
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - void: No retorna nada.
+    ***********************************************************************************
+    */
     public static void main(String[] args) {
         AsciiArt.printTorre();
 
@@ -155,18 +175,6 @@ public class Main {
         if (!derrotado) {
             System.out.println("Lo lamento, has sido derrotado. No eres el mejor entrenador Javaling :c\nEl tercer impacto es inevitable ahora.");
         }
-
-        // System.out.println(">Presiona enter para continuar...");
-        // String continuar = scanner.nextLine();
-        // System.out.print("\033[H\033[2J");
-        
-        // Entrenador rival = new Entrenador(piso);
-        // rival.mostrarEquipo();
-
-        // Combate.iniciarCombate(jugador, rival);
-
-
-        // scanner.close();
 
     }
 

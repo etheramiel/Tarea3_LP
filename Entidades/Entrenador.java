@@ -14,6 +14,11 @@ import Movimientos.Movimiento;
 import Movimientos.Tipo;
 import Piso.Piso;
 
+/*
+ * Clase Entrenador
+ * Representa a un entrenador de Javalings en el juego.
+ * Contiene información sobre su equipo de Javalings, su nombre y si es el campeón.
+ */
 public class Entrenador implements Batalla{
     
     private boolean esCampeon;
@@ -41,6 +46,11 @@ public class Entrenador implements Batalla{
     }
     //-----------------------------------------------------------------------------
 
+    /*
+     * Constructor de la clase Entrenador.
+     * Inicializa el equipo de Javalings y determina si el entrenador es un campeón.
+     * @param piso El piso en el que se encuentra el entrenador.
+     */
     public Entrenador(Piso piso){
 
         this.equipo = new Javaling[6];
@@ -64,7 +74,25 @@ public class Entrenador implements Batalla{
     }
 
 
-
+    /**
+     * Nombre: generarJavaling
+     * ---------------------------
+     * Descripción:
+     *   Genera un Javaling aleatorio de un tipo específico y lo inicializa con un nombre y nivel.
+     *   Si el Javaling es un campeón, se le asigna un movimiento potente.
+     * 
+     ****************************************************************************************
+    * Parámetros:
+    *   - tipo: Tipo de Javaling a generar (AGUA, FUEGO, PLANTA o DRAGON).
+    *   - nivel: Nivel del Javaling a generar.
+    *   - esCampeon: Indica si el Javaling es un campeón.
+    *   - casilla: Indica la posición en el equipo del Javaling en el equipo.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - Javaling: El Javaling generado.
+    ***********************************************************************************
+    */
     private Javaling generarJavaling(Tipo tipo, int nivel, boolean esCampeon, int casilla){
         Javaling j;
         String nombre = generarNombrejavaling();
@@ -103,6 +131,21 @@ public class Entrenador implements Batalla{
         return j;
     }
 
+    /**
+     * Nombre: buscarMovimientoPotente
+     * ---------------------------
+     * Descripción:
+     *  Busca un movimiento potente (con potencia >= 100) en la lista de movimientos disponibles.
+     *  Si encuentra uno, lo retorna.
+     ****************************************************************************************
+    * Parámetros:
+    *   - j: El Javaling para el cual se busca un movimiento potente.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - Movimiento: El movimiento potente encontrado, o null si no se encuentra ninguno.
+    ***********************************************************************************
+    */
     private Movimiento buscarMovimientoPotente(Javaling j){
         
         List<Movimiento> todos = new ArrayList<>();
@@ -121,6 +164,21 @@ public class Entrenador implements Batalla{
         return null;
     }
 
+    /**
+     * Nombre: generarNombrejavaling
+     * ---------------------------
+     * Descripción:
+     *   Genera un nombre aleatorio para un Javaling combinando un prefijo y un sufijo.
+     *  Los prefijos y sufijos son seleccionados aleatoriamente de listas predefinidas.
+     ****************************************************************************************
+    * Parámetros:
+    *   - Ninguno.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - String: El nombre generado para el Javaling.
+    ***********************************************************************************
+    */
     public static String generarNombrejavaling(){
         String[] prefijos = {
         "Char", "Lilli", "Meta", "Magi", "Snor", "Eev", "Vapo", "Cubo", "Slow", "Ab", "Odd",
@@ -139,12 +197,43 @@ public class Entrenador implements Batalla{
         return prefijo + sufijo;
     }
 
+    /**
+     * Nombre: elegirTipoAleatorio
+     * ---------------------------
+     * Descripción:
+     *   Genera un tipo aleatorio para un Javaling seleccionando entre AGUA, FUEGO y PLANTA.
+     *   El tipo se elige aleatoriamente utilizando un generador de números aleatorios.
+     ****************************************************************************************
+    * Parámetros:
+    *   - rand: El generador de números aleatorios utilizado para seleccionar el tipo.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - Tipo: El tipo aleatorio seleccionado para el Javaling.
+    ***********************************************************************************
+    */
     private Tipo elegirTipoAleatorio(Random rand){
         Tipo[] tipos = {Tipo.AGUA, Tipo.FUEGO, Tipo.PLANTA};
         return tipos[rand.nextInt(tipos.length)];
     }
 
-
+    /**
+     * Nombre: calcularCantJavalings
+     * ---------------------------
+     * Descripción:
+     *   Calcula la cantidad de Javalings que el entrenador puede tener en su equipo
+     *   según el piso en el que se encuentra.
+     *   Si el entrenador es un campeón, siempre tendrá 6 Javalings.
+     *   La cantidad de Javalings varía según el piso:
+     ****************************************************************************************
+    * Parámetros:
+    *   - piso: El piso en el que se encuentra el entrenador.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - int: La cantidad de Javalings que el entrenador puede tener en su equipo.
+    ***********************************************************************************
+    */
     public int calcularCantJavalings(int piso){
 
         if(esCampeon) return 6;
@@ -155,6 +244,23 @@ public class Entrenador implements Batalla{
         return 6;
     }
 
+    /**
+     * Nombre: generarEquipoAleatorio
+     * ---------------------------
+     * Descripción:
+     *   Genera un equipo de Javalings aleatorio para el entrenador.
+     *   La cantidad de Javalings y sus niveles se determinan según el piso en el que se encuentra el entrenador.
+     *   Si el entrenador es un campeón, se le asigna un nivel mayor.
+     *  Los tipos de Javalings se eligen aleatoriamente, y hay una probabilidad de que uno de ellos sea un dragón.
+     ****************************************************************************************
+    * Parámetros:
+    *   - piso: El piso en el que se encuentra el entrenador.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - void: No retorna nada.
+    ***********************************************************************************
+    */
     public void generarEquipoAleatorio(int piso){
         Random rand = new Random();
 
@@ -201,6 +307,23 @@ public class Entrenador implements Batalla{
 
     }
 
+    /**
+     * Nombre: elegirJavalingActivo
+     * ---------------------------
+     * Descripción:
+     *   Selecciona un Javaling activo del equipo del entrenador.
+     *   Busca un Javaling que tenga puntos de salud (hp) y lo retorna.
+     *   Si no encuentra ninguno, retorna null.
+     *   Este método se utiliza para determinar qué Javaling está activo en el combate.
+     ****************************************************************************************
+    * Parámetros:
+    *   - Ninguno.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - Javaling: El Javaling activo seleccionado, o null si no se encuentra ninguno.
+    ***********************************************************************************
+    */
     public Javaling elegirJavalingActivo(){
 
         for (int i = 0; i < equipo.length; i++) {
@@ -214,7 +337,21 @@ public class Entrenador implements Batalla{
         return null;
     }
 
-
+    /**
+     * Nombre: mostrarEquipo
+     * ---------------------------
+     * Descripción:
+     *   Muestra la información del equipo de Javalings del entrenador.
+     *   Imprime el nombre del entrenador y los detalles de cada Javaling en su equipo.
+     ****************************************************************************************
+    * Parámetros:
+    *   - Ninguno.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - void: No retorna nada.
+    ***********************************************************************************
+    */
     public void mostrarEquipo() {
     System.out.println(this.nombre);
     for (int i = 0; i < equipo.length; i++) {
@@ -225,6 +362,23 @@ public class Entrenador implements Batalla{
     }
     }
 
+    /**
+     * Nombre: escogerAtaque
+     * ---------------------------
+     * Descripción:
+     *   Selecciona un ataque aleatorio para el Javaling activo del entrenador.
+     *   Recorre los movimientos del Javaling y cuenta cuántos ataques tiene disponibles.
+     *   Luego, elige un ataque aleatorio entre los disponibles y lo retorna.
+     ****************************************************************************************
+    * Parámetros:
+    *   - javaling activo: El Javaling activo del entrenador.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - int: El índice del ataque seleccionado aleatoriamente.
+    *          Este índice se utiliza para determinar qué ataque utilizar en el combate.
+    ***********************************************************************************
+    */
     public int escogerAtaque(Javaling activo){
         int cantAtaques = 0;
         Random rand = new Random();

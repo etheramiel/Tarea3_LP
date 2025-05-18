@@ -8,6 +8,10 @@ import Javaling.Javaling;
 import Objetos.Objeto;
 import Piso.Piso;
 
+/**
+ * Clase Jugador que representa al jugador en el juego.
+ * Implementa la interfaz Batalla para permitir la selección de un Javaling activo.
+ */
 public class Jugador implements Batalla{
     
     private String nombre;
@@ -15,7 +19,10 @@ public class Jugador implements Batalla{
     private Javaling[] equipo; //= new Javaling[6];
     private Piso pisoActual;
 
-    //Constructor()
+    /*
+     * Constructor de la clase Jugador.
+     * Inicializa el equipo de javalings y la bolsa de objetos.
+     */
     public Jugador(){
         this.equipo = new Javaling[6];
         this.bolsa = new ArrayList<>();
@@ -54,7 +61,24 @@ public class Jugador implements Batalla{
     //-----------------------------------------------------------------------------------
 
 
-    //Interface
+    /**
+    * Nombre: elegirJavalingActivo
+    * ---------------------------
+    * Descripción:
+    *   Esta función permite al jugador elegir un Javaling activo de su equipo.
+    *  Si el jugador no tiene javalings disponibles, se le informa y se termina el juego.
+    *  Si el jugador elige un javaling que está fuera de combate, se le informa y se le pide que elija otro.
+    *  Si el jugador elige un javaling válido, se retorna el javaling elegido.
+    *  Si el jugador elige un número fuera del rango, se le informa y se le pide que elija otro.
+    ****************************************************************************************
+    * Parámetros:
+    *   - void: No recibe parámetros.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - Javaling: Retorna el javaling elegido por el jugador.
+    ***********************************************************************************
+    */
     public Javaling elegirJavalingActivo(){
         Scanner scanner = new Scanner(System.in);
 
@@ -115,6 +139,23 @@ public class Jugador implements Batalla{
         
     }
 
+    /**
+     * Nombre: agregarJavaling
+     * ---------------------------
+     * Descripción:
+     *   Esta función permite agregar un nuevo Javaling al equipo del jugador.
+     *   Si el equipo ya tiene 6 javalings, se le pregunta al jugador si desea reemplazar uno.
+     *   Si el jugador decide reemplazar uno, se le muestra el equipo y se le pide que elija el javaling a eliminar.
+     *   Si el jugador decide no reemplazar, se informa que el javaling no fue agregado.
+     ****************************************************************************************
+    * Parámetros:
+    *   - nuevo: El nuevo javaling a agregar al equipo.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - void: No retorna nada.
+    ***********************************************************************************
+    */
     public void agregarJavaling(Javaling nuevo){
         Scanner scanner = new Scanner(System.in);
         int contador = 0;
@@ -158,11 +199,44 @@ public class Jugador implements Batalla{
 
     }
     
+    /**
+     * Nombre: eliminarJavaling
+     * ---------------------------
+     * Descripción:
+     *   Esta función permite eliminar un javaling del equipo del jugador.
+     *   Se le pide al jugador que elija el javaling a eliminar.
+     *   Si el jugador elige un número fuera del rango, se le informa y se termina la función.
+     ****************************************************************************************
+    * Parámetros:
+    *   - indice: El índice del javaling a eliminar del equipo.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - void: No retorna nada.
+    ***********************************************************************************
+    */
     public void eliminarJavaling(int indice){
         this.equipo[indice] = null;
     }
 
 
+
+    /**
+     * Nombre: printEquipo
+     * ---------------------------
+     * Descripción:
+     *   Esta función imprime el estado del equipo del jugador.
+     *   Muestra el nombre, tipo, HP actual, velocidad y nivel de cada javaling en el equipo.
+     *   Si el javaling está vacío, se indica que la casilla está vacía.
+     ****************************************************************************************
+    * Parámetros:
+    *   - null: No recibe parámetros.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - void: No retorna nada.
+    ***********************************************************************************
+    */
     public void printEquipo(){
         for (int i = 0; i < equipo.length; i++) {
             if(equipo[i] != null){
@@ -185,6 +259,24 @@ public class Jugador implements Batalla{
         // System.out.println(Arrays.toString(lista));
     }
 
+    /**
+    * Nombre: subirEquipoNivel
+    * ---------------------------
+    * Descripción:
+    *   Esta función permite subir el nivel de todos los javalings del equipo.
+    *   segundo el nivel especificado.
+    *   
+    ****************************************************************************************
+    * Parámetros:
+    *   - tablero: Puntero a la estructura Tablero que se va a inicializar.
+    *   - filas: Número de filas del tablero.
+    *   - columnas: Número de columnas del tablero.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - void: No retorna nada.
+    ***********************************************************************************
+    */
     public void subirEquipoNivel(int nivel){
         for (int i = 0; i < equipo.length; i++) {
             if(equipo[i] != null){
@@ -200,6 +292,22 @@ public class Jugador implements Batalla{
         
     }
 
+    /**
+    * Nombre: agregarObjeto
+    * ---------------------------
+    * Descripción:
+    *   Esta función permite agregar un nuevo objeto a la bolsa del jugador.
+    *   Si el objeto ya existe en la bolsa, se aumenta su cantidad.
+    *   Si el objeto no existe, se agrega a la bolsa.
+    ****************************************************************************************
+    * Parámetros:
+    *   - objeto: El nuevo objeto a agregar a la bolsa.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - void: No retorna nada.
+    ***********************************************************************************
+    */
     public void agregarObjeto(Objeto nuevo){
         for (int i = 0; i < bolsa.size(); i++) {
             Objeto o = bolsa.get(i);
@@ -212,6 +320,22 @@ public class Jugador implements Batalla{
     }
 
 
+    /**
+    * Nombre: usarObjeto
+    * ---------------------------
+    * Descripción:
+    *   Esta función permite al jugador usar un objeto de su bolsa.
+    *   Si la bolsa está vacía, se informa al jugador.
+    *   Si el jugador elige un objeto que no tiene, se le informa y se termina la función.
+    ****************************************************************************************
+    * Parámetros:
+    *   - Scanner scanner: El objeto Scanner para leer la entrada del usuario.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - void: No retorna nada.
+    ***********************************************************************************
+    */
     public void usarObjeto(Scanner scanner){
         if(bolsa.isEmpty()){
             System.out.println(">Tu bolsa está vacia");

@@ -8,6 +8,10 @@ import Movimientos.Movimiento;
 import Movimientos.Tipo;
 import Piso.Piso;
 
+/*
+ * Clase abstracta que representa a un Javaling.
+ * Contiene atributos y métodos comunes a todos los Javaling.
+ */
 public abstract class Javaling {
     
     private String nombre;
@@ -25,6 +29,10 @@ public abstract class Javaling {
     private int bonusHpTotal;
     private int bonusHpActual;
 
+    /*
+     * Constructor de la clase Javaling.
+     * Inicializa los atributos del Javaling.
+     */
     public Javaling(String name, int hpBase, int velocidad, int nivel, Tipo tipo){
         this.nombre = name;
         this.hpBase = hpBase;
@@ -39,7 +47,23 @@ public abstract class Javaling {
         this.hpActual = hpTotal;
     }
 
-
+    /**
+    * Nombre: calcularHPtotal
+    * ---------------------------
+    * Descripción:
+    *   Calcula el HP total del Javaling en función de su nivel y HP base.
+    *   La fórmula utilizada es: (2 * HP base * nivel) / 100 + nivel + 10.
+    *   Esta fórmula es común a todos los Javaling y se utiliza para determinar
+    *   el HP total al inicio del combate y al subir de nivel.
+    ****************************************************************************************
+    * Parámetros:
+    *   - Ninguno.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - int: El HP total calculado.
+    ***********************************************************************************
+    */
     public int calcularHPtotal(){
         double nuevoHpTotal = (2*hpBase * nivel) / 100.0 + (double)nivel + 10.0;
         return (int) nuevoHpTotal;
@@ -140,6 +164,22 @@ public abstract class Javaling {
     }
     //----------------------------------------------------------------------------------
 
+
+    /**
+     * Nombre: atacar
+     * ---------------------------
+     * Descripción:
+     *   Realiza un ataque a otro Javaling utilizando un movimiento específico.
+     *   Calcula el daño infligido y lo aplica al objetivo.
+     ****************************************************************************************
+     * Parámetros:
+     *   - objetivo: El Javaling objetivo del ataque.
+     *   - indiceMov: El índice del movimiento a utilizar en el ataque.
+     **************************************************************************************
+     * Retorno:
+     *   - int: El daño total infligido al objetivo.
+     ***********************************************************************************
+     */
     public int atacar(Javaling objetivo, int indiceMov){
         Movimiento mov = movimientos[indiceMov];
         if(mov == null){
@@ -176,6 +216,20 @@ public abstract class Javaling {
         return (int)danioTotal;
     }
 
+    /**
+     * Nombre: recibirDaño
+     * ---------------------------
+     * Descripción:
+     *   Aplica el daño recibido al HP actual del Javaling.
+     *   Si el HP actual se vuelve negativo, se establece en 0.
+     ****************************************************************************************
+     * Parámetros:
+     *   - danioTotal: El daño total recibido.
+     **************************************************************************************
+     * Retorno:
+     *   - void: No retorna nada.
+     ***********************************************************************************
+     */
     public void recibirDaño(int danioTotal){
         this.hpActual -= danioTotal;
         if (hpActual < 0) {
@@ -183,6 +237,19 @@ public abstract class Javaling {
         }
     }
 
+    /**
+     * Nombre: printMovimientos
+     * ---------------------------
+     * Descripción:
+     *   Imprime los movimientos del Javaling en la consola.
+     ****************************************************************************************
+     * Parámetros:
+     *   - Ninguno.
+     **************************************************************************************
+     * Retorno:
+     *   - void: No retorna nada.
+     ***********************************************************************************
+     */
     public void printMovimientos(){
         for (int i = 0; i < movimientos.length; i++) {
             System.out.print((i + 1) + ". ");
@@ -195,6 +262,19 @@ public abstract class Javaling {
 
     }
 
+    /**
+     * Nombre: printDatos
+     * ---------------------------
+     * Descripción:
+     *   Imprime los datos del Javaling en la consola.
+     ****************************************************************************************
+     * Parámetros:
+     *   - Ninguno.
+     **************************************************************************************
+     * Retorno:
+     *   - void: No retorna nada.
+     ***********************************************************************************
+     */
     public void printDatos(){
         System.out.println(">Nombre: " + this.nombre);
         System.out.println(">Tipo: " + this.tipo);
@@ -204,6 +284,23 @@ public abstract class Javaling {
     }
     
 
+    /**
+     * Nombre: subirNivel
+     * ---------------------------
+     * Descripción:
+     *   Aumenta el nivel del Javaling y recalcula su HP total.
+     *   Si el HP actual es 0, se establece en 0.
+     *   Si el nuevo HP actual excede el HP total, se ajusta al HP total.
+     *   Si el nivel de captura es mayor o igual al nuevo nivel + 7,
+     *   se genera un nuevo movimiento aleatorio.
+     ****************************************************************************************
+     * Parámetros:
+     *   - nivel: El nivel a aumentar.
+     **************************************************************************************
+     * Retorno:
+     *   - void: No retorna nada.
+     ***********************************************************************************
+     */
     public void subirNivel(int nivel){
         this.nivel += nivel;
         
@@ -229,6 +326,20 @@ public abstract class Javaling {
         }
     }
 
+    /**
+     * Nombre: generadorSalvaje
+     * ---------------------------
+     * Descripción:
+     *   Genera un Javaling salvaje aleatorio en función del piso.
+     *   El tipo y nivel se determinan aleatoriamente.
+     ****************************************************************************************
+     * Parámetros:
+     *   - piso: El piso en el que se encuentra el Javaling salvaje.
+     **************************************************************************************
+     * Retorno:
+     *   - Javaling: El Javaling salvaje generado.
+     ***********************************************************************************
+     */
     public static Javaling generadorSalvaje(Piso piso){
         Random rand = new Random();
 
@@ -258,24 +369,93 @@ public abstract class Javaling {
         return j;
     }
 
+    /**
+     * Nombre: elegirTipoAleatorio
+     * ---------------------------
+     * Descripción:
+     *   Elige un tipo aleatorio de Javaling.
+     ****************************************************************************************
+     * Parámetros:
+     *   - rand: Objeto Random para generar números aleatorios.
+     **************************************************************************************
+     * Retorno:
+     *   - Tipo: El tipo aleatorio elegido.
+     ***********************************************************************************
+     */
     public static Tipo elegirTipoAleatorio(Random rand){
         Tipo[] tipos = {Tipo.AGUA, Tipo.FUEGO, Tipo.PLANTA};
         return tipos[rand.nextInt(tipos.length)];
     }
 
+    /**
+     * Nombre: getMultiplicadorHabilidad
+     * ---------------------------
+     * Descripción:
+     *   Calcula el multiplicador de habilidad del movimiento
+     *   dependiendo del tipo de Javaling y el objetivo.
+     ****************************************************************************************
+     * Parámetros:
+     *   - mov: Movimiento que se está ejecutando.
+     *   - objetivo: Javaling objetivo del movimiento.
+     **************************************************************************************
+     * Retorno:
+     *   - double: El multiplicador de habilidad.
+     ***********************************************************************************
+     */
     public double getMultiplicadorHabilidad(Movimiento mov, Javaling objetivo) {
     return 1.0;
     }
 
-    
+    /**
+     * Nombre: aplicarMovimientoEstado
+     * ---------------------------
+     * Descripción:
+     *   Aplica el efecto del movimiento de estado al objetivo.
+     ****************************************************************************************
+     * Parámetros:
+     *   - mov: Movimiento que se está ejecutando.
+     *   - objetivo: Javaling objetivo del movimiento.
+     **************************************************************************************
+     * Retorno:
+     *   - void: No retorna nada.
+     ***********************************************************************************
+     */
     public void iniciarTurno() {
     }
 
+    /**
+     * Nombre: restaurarEstadoCombate
+     * ---------------------------
+     * Descripción:
+     *   Restaura el estado del Javaling al inicio de su turno.
+     *   Resetea el bonus de daño y la velocidad de combate.
+     ****************************************************************************************
+     * Parámetros:
+     *   - Ninguno.
+     **************************************************************************************
+     * Retorno:
+     *   - void: No retorna nada.
+     ***********************************************************************************
+     */
     public void restaurarEstadoCombate() {
     this.bonusDanio = 1.0;
     this.velocidadCombate = this.velocidad;
     }
 
+    /**
+     * Nombre: aplicarMovimientoEstado
+     * ---------------------------
+     * Descripción:
+     *   Aplica el efecto del movimiento de estado al objetivo.
+     ****************************************************************************************
+     * Parámetros:
+     *   - mov: Movimiento que se está ejecutando.
+     *   - objetivo: Javaling objetivo del movimiento.
+     **************************************************************************************
+     * Retorno:
+     *   - void: No retorna nada.
+     ***********************************************************************************
+     */
     protected void aplicarMovimientoEstado(Movimiento mov, Javaling objetivo) {
     
         switch (mov.getNombre()) {

@@ -4,6 +4,11 @@ import java.util.Scanner;
 import Entidades.Jugador;
 import Javaling.Javaling;
 
+/*
+ * Clase Objeto
+ * Representa un objeto que puede ser usado por el jugador
+ * Contiene atributos como nombre, si es curativo, cantidad, si revive y su poder.
+ */
 public class Objeto {
     private String nombre;
     private boolean esCurativo;
@@ -11,6 +16,10 @@ public class Objeto {
     private boolean esRevivir;
     private int poder;
 
+    /*
+     * Constructor de la clase Objeto.
+     * Inicializa los atributos de la clase.
+     */
     public Objeto(String nombre, boolean esCurativo, boolean esRevivir, int poder){
         this.nombre = nombre;
         this.esCurativo = esCurativo;
@@ -57,10 +66,39 @@ public class Objeto {
     }
     //-------------------------------------------------------------------
 
+    /**
+     * Nombre: aumentarCantidad
+     * ---------------------------
+     * Descripción:
+     *   Aumenta la cantidad del objeto en 1.
+     ****************************************************************************************
+    * Parámetros:
+    *   - void: No recibe parámetros.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - void: No retorna nada.
+    ***********************************************************************************
+    */
     public void aumentarCantidad(){
         this.cantidad ++;
     }
 
+    /**
+     * Nombre: usar
+     * ---------------------------
+     * Descripción:
+     *   Aplica el objeto al jugador.
+     ****************************************************************************************
+    * Parámetros:
+    *   - Jugador jugador: El jugador que usará el objeto.
+    *   - Scanner scanner: Scanner para leer la entrada del usuario.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - void: No retorna nada.
+    ***********************************************************************************
+    */
     public void usar(Jugador jugador, Scanner scanner){
         if(esCurativo){
             jugador.printEquipo();

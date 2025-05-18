@@ -5,8 +5,27 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
-
+/*
+ * GeneradorMovimientos.java
+ * Generador de movimientos para los Javaling.
+ */
 public class GeneradorMovimientos {
+
+    /**
+     * Nombre: generadorMovimientos
+     * ---------------------------
+     * Descripción:
+     *   Genera un conjunto de movimientos para un Javaling de tipo Agua.
+     *   Cada movimiento tiene su nombre, potencia, precisión, descripción y tipo.
+     ****************************************************************************************
+    * Parámetros:
+    *   - tipoPrincipal: Tipo de javaling (AGUA, FUEGO, PLANTA, DRAGON).
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - Movimiento[]: Array de movimientos generados.
+    ***********************************************************************************
+    */
     public static Movimiento[] generadorMovimientos(Tipo tipoPrincipal){
         Movimiento[] resultado = new Movimiento[4];
         Random rand = new Random();
@@ -27,10 +46,7 @@ public class GeneradorMovimientos {
                 cantidad++;
             }
         }
-        // resultado[0] = tipoPropio.get(0);
-        // resultado[1] = tipoPropio.get(1);
-        
-        //VEROFIVAR QUE NO SE REPITA EL DE ESTADO
+ 
         List<Movimiento> estado = DatosMovimientos.movimientosEstado();
         Collections.shuffle(estado);
         resultado[2] = estado.get(0);
@@ -62,6 +78,21 @@ public class GeneradorMovimientos {
     }
 
 
+/**
+     * Nombre: generadorMovimientoAleatorio
+     * ---------------------------
+     * Descripción:
+     *   Genera un movimiento aleatorio de todos los tipos de movimientos disponibles.
+     *  Cada movimiento tiene su nombre, potencia, precisión, descripción y tipo.
+     ****************************************************************************************
+    * Parámetros:
+    *   - movimientos: Array de movimientos del javaling.
+    *   
+    **************************************************************************************
+    * Retorno:
+    *   - Movimiento: Movimiento aleatorio generado.
+    ***********************************************************************************
+    */
     public static Movimiento generadorMovimientoAleatorio(Movimiento[] movimientos){
         List<Movimiento> todos = new ArrayList<>();
         todos.addAll(DatosMovimientos.movimientosAgua());
