@@ -1,5 +1,4 @@
 package Combate;
-import java.nio.channels.Pipe.SourceChannel;
 import java.util.Random;
 import java.util.Scanner;
 import Javaling.Javaling;

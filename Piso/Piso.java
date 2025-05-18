@@ -2,6 +2,8 @@ package Piso;
 import java.util.Scanner;
 
 import Entidades.Jugador;
+import Objetos.Objeto;
+import Objetos.ObjetoAleatorio;
 
 public class Piso {
     
@@ -58,7 +60,11 @@ public class Piso {
         System.out.println(".....");
         System.out.println("Todos tus Javalings han sido curados");
 
-        //Logica objeto aleatorio
+        Objeto objeto = ObjetoAleatorio.generarObjetoAleatorio();
+        jugador.agregarObjeto(objeto);
+
+        objeto = ObjetoAleatorio.generarObjetoAleatorio();
+        jugador.agregarObjeto(objeto);
 
         System.out.println(">Presione enter para continuar...");
         scanner.nextLine(); 
