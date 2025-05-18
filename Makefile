@@ -1,5 +1,3 @@
-SRC=TAREA3_LP
-
 
 SOURCES=$(shell find $(SRC) -name "*.java")
 

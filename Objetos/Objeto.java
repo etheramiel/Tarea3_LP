@@ -85,12 +85,26 @@ public class Objeto {
             else{
                 int curar = (j.getHpTotal() * poder / 100);
                 if(curar > j.getHpActual() + curar){
-                    j.setHpActual(j.getHpTotal());
-                    System.out.println(j.getNombre() + " fue curado al 100%.");
+                    if(j.getHpActual() != 0){
+                        j.setHpActual(j.getHpTotal());
+                        System.out.println(j.getNombre() + " fue curado al 100%.");
+                    }
+                    else{
+                        System.out.println("Este Javaling esta fuera de combate");
+                        return;
+                    }
+                    
                 }
                 else{
-                    j.setHpActual(j.getHpActual() + curar);
-                    System.out.println(j.getNombre() + " fue curado por " + curar + " puntos.");
+                    if(j.getHpActual() != 0){
+                        j.setHpActual(j.getHpActual() + curar);
+                        System.out.println(j.getNombre() + " fue curado por " + curar + " puntos.");
+                    }
+                    else{
+                        System.out.println("Este Javaling esta fuera de combate");
+                        return;
+                    }
+                    
                 }
             }
         }
