@@ -1,3 +1,10 @@
+package Movimientos;
+
+/*
+ * Clase Movimiento
+ * Representa un movimiento que puede realizar un Pokémon.
+ * Contiene atributos como nombre, potencia, precisión, tipo, estado y descripción.
+ */
 public class Movimiento {
 
     private String nombre;
@@ -7,7 +14,10 @@ public class Movimiento {
     private boolean esEstado;
     private String descripcion;
 
-    //Constructor
+    /*
+     * Constructor de la clase Movimiento.
+     * Inicializa los atributos de la clase.
+     */
     public Movimiento(String nombre, int potencia, int precision, boolean esEstado, Tipo tipo, String descripcion){
         this.nombre = nombre;
         this.potencia = potencia;
